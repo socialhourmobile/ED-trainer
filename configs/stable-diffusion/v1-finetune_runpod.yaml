@@ -71,7 +71,7 @@ data:
     train:
       target: ldm.data.every_dream.EveryDreamBatch
       params:
-        repeats: 50   # Adjust how much trainging to do.  Fewer training images need more repeats.  This is multiplied by max_epochs for "amount" of training.
+        repeats: 20   # Adjust how much trainging to do.  Fewer training images need more repeats.  This is multiplied by max_epochs for "amount" of training.
         flip_p: 0   # use 0.5 to randomly flip images each repeat, not recommended unless very low training data (<20 images)
         debug_level: 1   # 1 to print if images are dropped due to multiple-aspect ratio image bucketing
     validation:
@@ -102,7 +102,7 @@ lightning:
 
   trainer:
     benchmark: True
-    max_epochs: 4   # suggest 3-4+ and adjust repeats above, only "save_top_k" number (above) of epochs are kept, be mindful of volume store use
+    max_epochs: 8   # suggest 3-4+ and adjust repeats above, only "save_top_k" number (above) of epochs are kept, be mindful of volume store use
     max_steps: 99000   # better to end on epochs not steps, especially with >500 images to ensure even distribution, but you can set this if you really want...
     check_val_every_n_epoch: 1
     gpus: 0,
